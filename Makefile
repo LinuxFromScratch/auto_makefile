@@ -87,8 +87,7 @@ export LINK_STATIC LINK_SHARED LINK_FALGS LINK_SLIBS LINK_DLIBS INSTALL_LIB
 # GCC
 #****************************************************************************
 HOST_NAME ?=
-
-CROSS_COMPILE ?= ${HOST_NAME}-
+CROSS_COMPILE ?= 
 
 AS	= $(CROSS_COMPILE)as
 LD	= $(CROSS_COMPILE)ld
