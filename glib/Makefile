@@ -1,7 +1,7 @@
 
 current_dir := ${CURDIR}/glib
 
-configure_zlib_args := --static --enable-shared --prefix=${CURDIR}/target
+configure_zlib_args := --static --enable-shared --prefix=${CURDIR}/target 
 
 configure_libffi_args := --enable-static --host=${HOST_NAME} --prefix=${CURDIR}/target
 

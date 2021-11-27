@@ -87,8 +87,7 @@ export LINK_STATIC LINK_SHARED LINK_FALGS LINK_SLIBS LINK_DLIBS INSTALL_LIB
 # GCC
 #****************************************************************************
 HOST_NAME ?=
-
-CROSS_COMPILE ?= ${HOST_NAME}-
+CROSS_COMPILE ?= 
 
 AS	= $(CROSS_COMPILE)as
 LD	= $(CROSS_COMPILE)ld
@@ -128,10 +127,9 @@ MERGE_LDFLAGS := -z defs -z muldefs -undefined -Bsymbolic -shared
 
 
 export AS LD  CPP AR NM STRIP OBJCOPY OBJDUMP RANLIB 
-
-#export CC
-
 export CFLAGS LDFLAGS MERGE_LDFLAGS HOST_NAME
+export CC
+
 
 TEST_CFLAGS ?= ${CFLAGS}
 LINK_PATH := -L target/lib

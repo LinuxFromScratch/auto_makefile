@@ -1,4 +1,4 @@
 # auto makefile
 
-make HOST_NAME=arm-hisiv400-linux
+make HOST_NAME=arm-hisiv400-linux CROSS_COMPILE=arm-hisiv400-linux-
 
