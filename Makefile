@@ -133,16 +133,6 @@ LINK_PATH := -L target/lib
 LD_LIBS := -lmultitask -lpthread -lm -lrt
 PLATFORM_LIBS :=
 
-ifeq ($(CONFIG_SOC),T31)
-	PLATFORM_LIBS += -limp -lalog
-	LINK_PATH += -L /home/leon/work/Ingenic/Ingenic-SDK-T31-1.1.3/sdk/4.7.2/lib/uclibc
-	CFLAGS += -I /home/leon/work/Ingenic/Ingenic-SDK-T31-1.1.3/sdk/4.7.2/include
-	CFLAGS += -I mmp/t31
-else
-	PLATFORM_LIBS += 
-	LINK_PATH += 
-endif
-
 
 export TEST_CFLAGS LINK_PATH LD_LIBS
 
