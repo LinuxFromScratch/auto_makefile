@@ -9,7 +9,7 @@ configure_glib_args := --enable-silent-rules --enable-static --enable-shared --w
 configure_glib_args += "glib_cv_stack_grows=no glib_cv_uscore=no ac_cv_func_posix_getpwuid_r=no ac_cv_func_posix_getgrgid_r=no"
 configure_glib_args += --host=${HOST_NAME} --prefix=${CURDIR}/target  CFLAGS="${CFLAGS} -Wno-format-nonliteral"
 configure_glib_args += ZLIB_CFLAGS="-I${CURDIR}/target/include" ZLIB_LIBS="${CURDIR}/target/lib/libz.a" 	
-configure_glib_args += LIBFFI_CFLAGS="-I${CURDIR}/target/lib/libffi-3.2.1/include" LIBFFI_LIBS="${CURDIR}/target/libffi.la"
+configure_glib_args += LIBFFI_CFLAGS="-I${CURDIR}/target/lib/libffi-3.2.1/include" LIBFFI_LIBS="${CURDIR}/target/lib/libffi.la"
 
 lib_name_zlib := zlib-1.2.11
 lib_name_libffi := libffi-3.2.1
