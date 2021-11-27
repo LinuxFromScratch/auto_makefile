@@ -2,9 +2,9 @@
 
 PHONY : all
 
-TARGET_NAME ?= target/bin/multitask
-LIBCOMM_D_NAME ?= target/lib/libmultitask.so
-LIBCOMM_S_NAME ?= target/lib/libmultitask.a
+TARGET_NAME ?= target/bin/automakefile
+LIBCOMM_D_NAME ?= target/lib/libautomakefile.so
+LIBCOMM_S_NAME ?= target/lib/libautomakefile.a
 
 #############################3
 
