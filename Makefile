@@ -151,7 +151,7 @@ MAKEFILE_BUILD := scripts/Makefile.build
 MAKEFILE_TEST_BUILD := scripts/Makefile.test.build
 export MAKEFILE_BUILD MAKEFILE_TEST_BUILD
 
-dirs := util/ platform/ component/
+dirs := glib/
 dirs := ${patsubst %/,%,$(filter %/, $(dirs))}
 PHONY += $(dirs)
 $(dirs): FORCE
@@ -180,8 +180,6 @@ build_3th: FORCE
 objs := init/main.o
 
 all:  $(dirs) ${objs} build_comms_static_lib FORCE
-	mkdir -p target/bin target/lib target/include
-	$(CC) ${CFLAGS} ${LINK_PATH} -o ${TARGET_NAME} ${objs} ${LD_LIBS}
 
 test_dirs := sample/
 test_dirs := ${patsubst %/,%,$(filter %/, $(test_dirs))}
