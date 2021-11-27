@@ -200,7 +200,6 @@ clean: opensouce_clean 	FORCE
 	@rm -f ${TARGET_NAME} ${LIBCOMM_NAME}
 	@${shell for dir in `find -maxdepth 3 -type d | grep -v git| grep -v include | grep -v \.si4project`;\
 	do rm -f $${dir}/*.o $${dir}/*.bak $${dir}/*.so $${dir}/*.a $${dir}/*.dep;done}
-	@${shell cd sample && for i in `find *.c`;do rm -f `echo $$i|sed 's/\.c//g' `;done }
 	@exit 0
 
 distclean: clean

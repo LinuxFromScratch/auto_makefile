@@ -16,16 +16,13 @@ lib_name_libffi := libffi-3.2.1
 lib_name_glib := glib-2.40.2
 
 sub_target:	
-	@echo "[1;33m" ">>>>>>> Enter DIR:${current_dir}" "[0;39m"
-	@echo "[1;33m" "++++ Make sub_target: ${lib_name_zlib} " "[0;39m"
-	$(call filechk,${lib_name_zlib})
+	$(call auto_build_lib,${current_dir},${lib_name_zlib},$(configure_zlib_args))
 
 
-
-define filechk
-	@echo ">>>>>>>>>>>>>>>>>>>>>> file: $(1)" ;\
-	set -x;\
-	tar -zxf ${current_dir}/$(1).tar.gz -C ${current_dir}/ ;\
-	cd ${current_dir}/$(1) ;\
-	./configure;
+# dir , lib name , configure args
+define auto_build_lib
+	@echo "[1;33m" ">>>>>>> Enter DIR:$(1)" "[0;39m" ;
+	@set -x;
+	@tar -zxf $(1)/$(2).tar.gz -C $(1)/ ;
+	@cd $(1)/$(2) && ./configure $(3);
 endef
