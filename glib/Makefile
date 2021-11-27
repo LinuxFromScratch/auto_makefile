@@ -17,5 +17,6 @@ lib_name_glib := glib-2.40.2
 
 sub_target:	
 	$(call auto_build_lib,${current_dir},${lib_name_zlib},$(configure_zlib_args))
-
+	$(call auto_build_lib,${current_dir},${lib_name_libffi},$(configure_libffi_args))
+	$(call auto_build_lib,${current_dir},${lib_name_glib},$(configure_glib_args))
 
