@@ -127,7 +127,11 @@ MERGE_LDFLAGS := -z defs -z muldefs -undefined -Bsymbolic -shared
 #MERGE_LDFLAGS := -t -z defs -z muldefs -undefined -Bsymbolic -shared
 
 
-export AS LD CC CPP AR NM STRIP OBJCOPY OBJDUMP RANLIB CFLAGS LDFLAGS MERGE_LDFLAGS HOST_NAME
+export AS LD  CPP AR NM STRIP OBJCOPY OBJDUMP RANLIB 
+
+export CC
+
+export CFLAGS LDFLAGS MERGE_LDFLAGS HOST_NAME
 
 TEST_CFLAGS ?= ${CFLAGS}
 LINK_PATH := -L target/lib
