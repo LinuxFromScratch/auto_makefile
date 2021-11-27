@@ -129,7 +129,7 @@ MERGE_LDFLAGS := -z defs -z muldefs -undefined -Bsymbolic -shared
 
 export AS LD  CPP AR NM STRIP OBJCOPY OBJDUMP RANLIB 
 
-export CC
+#export CC
 
 export CFLAGS LDFLAGS MERGE_LDFLAGS HOST_NAME
 
