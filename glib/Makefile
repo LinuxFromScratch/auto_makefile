@@ -18,6 +18,6 @@ lib_name_suffix :=.tar.gz
 
 sub_target:	
 	$(call auto_build_lib,${current_dir},${lib_name_zlib},$(lib_name_suffix),$(configure_zlib_args))
-	$(call auto_build_lib,${current_dir},${lib_name_libffi},$(lib_name_suffix),$(configure_libffi_args))
+#	$(call auto_build_lib,${current_dir},${lib_name_libffi},$(lib_name_suffix),$(configure_libffi_args))
 #	$(call auto_build_lib,${current_dir},${lib_name_glib},$(lib_name_suffix),$(configure_glib_args))
 
