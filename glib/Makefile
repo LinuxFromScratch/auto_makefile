@@ -19,10 +19,3 @@ sub_target:
 	$(call auto_build_lib,${current_dir},${lib_name_zlib},$(configure_zlib_args))
 
 
-# dir , lib name , configure args
-define auto_build_lib
-	@echo "[1;33m" ">>>>>>> Enter DIR:$(1)" "[0;39m" ;
-	@set -x;
-	@tar -zxf $(1)/$(2).tar.gz -C $(1)/ ;
-	@cd $(1)/$(2) && ./configure $(3);
-endef
