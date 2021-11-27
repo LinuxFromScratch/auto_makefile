@@ -104,11 +104,6 @@ HOST_NAME ?= $(CROSS_COMPILE)
 
 CFLAGS ?=
 CFLAGS += -fPIC -rdynamic -pipe -O2 -Wall
-CFLAGS += -I include 
-CFLAGS += -I target/include
-CFLAGS += -I include/util
-CFLAGS += -I include/platform/bsp
-CFLAGS += -I include/platform/os
 
 
 ifeq ($(CONFIG_SOC),T31)
@@ -118,8 +113,7 @@ else
 endif
 
 LDFLAGS ?= 
-LDFLAGS += -rdynamic -shared 
-#LDFLAGS += -L ${INSTALL_LIB}
+
 
 # merge share lib flags
 MERGE_LDFLAGS := -z defs -z muldefs -undefined -Bsymbolic -shared
