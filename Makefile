@@ -118,8 +118,6 @@ else
 endif
 
 LDFLAGS ?= 
-LDFLAGS += -rdynamic -shared 
-#LDFLAGS += -L ${INSTALL_LIB}
 
 # merge share lib flags
 MERGE_LDFLAGS := -z defs -z muldefs -undefined -Bsymbolic -shared
