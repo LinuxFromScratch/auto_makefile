@@ -14,9 +14,10 @@ configure_glib_args += LIBFFI_CFLAGS="-I${CURDIR}/target/lib/libffi-3.2.1/includ
 lib_name_zlib := zlib-1.2.11
 lib_name_libffi := libffi-3.2.1
 lib_name_glib := glib-2.40.2
+lib_name_suffix :=.tar.gz
 
 sub_target:	
-	$(call auto_build_lib,${current_dir},${lib_name_zlib},$(configure_zlib_args))
-	$(call auto_build_lib,${current_dir},${lib_name_libffi},$(configure_libffi_args))
-	$(call auto_build_lib,${current_dir},${lib_name_glib},$(configure_glib_args))
+	$(call auto_build_lib,${current_dir},${lib_name_zlib},$(lib_name_suffix),$(configure_zlib_args))
+	$(call auto_build_lib,${current_dir},${lib_name_libffi},$(lib_name_suffix),$(configure_libffi_args))
+	$(call auto_build_lib,${current_dir},${lib_name_glib},$(lib_name_suffix),$(configure_glib_args))
 
