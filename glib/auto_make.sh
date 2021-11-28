@@ -8,7 +8,7 @@ install_path=$cur_dir/../target
 #
 if [ $# -lt 2 ];then
 	ERR [$FUNCNAME-$LINENO] "usage: $0 [action] [host]"
-	CMD [$FUNCNAME-$LINENO] "action options: [make/clean/install/uninstall]"
+	CMD [$FUNCNAME-$LINENO] "action options: [make/clean/merge]"
 	CMD [$FUNCNAME-$LINENO] "host options: [arm-hisiv300-linux/arm-hisiv400-linux/x86]"
 	exit 1
 fi
@@ -19,8 +19,7 @@ action=$1
 LOG "action=$action"
 if [ "$action" != "make" ] \
 && [ "$action" != "clean" ] \
-&& [ "$action" != "install" ] \
-&& [ "$action" != "uninstall" ] ;then
+&& [ "$action" != "merge" ] ;then
 	 ERR [$FUNCNAME-$LINENO] "action: $action unsupport..."
 	 exit 1
 fi
@@ -168,7 +167,8 @@ auto_clean_glib()
 merge_mutil_libs()
 {
 	set -e
-	ld -r -o $install_path/lib/libAUTOMAKE.a  -L $install_path/lib --whole-archive `ls $install_path/lib/*.a` --no-whole-archive
+	CMD [$FUNCNAME-$LINENO] "ld -r -o $install_path/lib/libAUTOMAKE.a  -L $install_path/lib --whole-archive `ls $install_path/lib/*.a | xargs` --no-whole-archive"
+	ld -r -o $install_path/lib/libAUTOMAKE.a  -L $install_path/lib --whole-archive `ls $install_path/lib/*.a | xargs` --no-whole-archive
 	exit 0
 }
 
@@ -181,7 +181,6 @@ if [ "$action" == "make" ] ;then
 	auto_make_zlib $host $install_path
 	auto_make_libffi $host $install_path
 	auto_make_glib $host $install_path
-	merge_mutil_libs
 	exit 0
 	
 elif [ "$action" == "clean" ] ;then
@@ -189,6 +188,9 @@ elif [ "$action" == "clean" ] ;then
 	auto_clean_libffi
 	auto_clean_glib
 	exit 0
+elif [ "$action" == "merge" ] ;then
+	merge_mutil_libs
+	exit 0	
 else
 	ERR [$FUNCNAME-$LINENO] "unknow command..."
 	exit 0
