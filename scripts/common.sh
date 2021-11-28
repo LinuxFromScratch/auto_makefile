@@ -47,6 +47,8 @@ PWD=`pwd`
 #unset linux environment variable
 ENV_VAR_UNSET()
 {
+	echo "${COLOR_YELLOW}: ENV_VAR_UNSET " >&2
+	
 	# cross compile
 	unset CC
 	unset AR
