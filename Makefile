@@ -172,7 +172,7 @@ build_3th: FORCE
 
 objs := init/main.o
 
-all:  $(dirs) build_comms_static_lib FORCE
+all:  build_comms_static_lib FORCE
 
 test_dirs := sample/
 test_dirs := ${patsubst %/,%,$(filter %/, $(test_dirs))}
