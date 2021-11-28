@@ -17,6 +17,7 @@ endef
 define auto_install_lib
 	@echo "[1;33m" ">>>>>>> Build File: $(2)$(3)" "[0;39m" ;
 	@set -x;
+	@ln -s `which install` $(1)/$(2)/install
 	@cd $(1)/$(2) && make install;
 endef
 
