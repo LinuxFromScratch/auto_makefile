@@ -141,7 +141,7 @@ MAKEFILE_BUILD := scripts/Makefile.build
 MAKEFILE_TEST_BUILD := scripts/Makefile.test.build
 export MAKEFILE_BUILD MAKEFILE_TEST_BUILD
 
-dirs := glib/
+dirs := opencv/
 dirs := ${patsubst %/,%,$(filter %/, $(dirs))}
 PHONY += $(dirs)
 $(dirs): FORCE
@@ -182,6 +182,7 @@ opensouce_clean: FORCE
 	@rm -fr glib/zlib-1.2.11
 	@rm -fr glib/libffi-3.2.1
 	@rm -fr glib/glib-2.40.2
+	@rm -fr opencv/opencv-3.4.10
 	@exit 0
 
 clean: opensouce_clean 	FORCE
