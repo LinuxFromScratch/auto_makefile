@@ -104,7 +104,7 @@ HOST_NAME ?= $(CROSS_COMPILE)
 
 CFLAGS ?=
 CFLAGS += -fPIC -rdynamic -pipe -O2 -Wall
-
+CFLAGS += -I${CURDIR}/target/include
 
 ifeq ($(CONFIG_SOC),T31)
 	CFLAGS += -muclibc
@@ -172,7 +172,7 @@ build_3th: FORCE
 
 objs := init/main.o
 
-all:  build_comms_static_lib FORCE
+all: ${dirs} build_comms_static_lib FORCE
 
 test_dirs := sample/
 test_dirs := ${patsubst %/,%,$(filter %/, $(test_dirs))}
@@ -183,8 +183,8 @@ test: $(test_dirs) FORCE
 
 opensouce_clean: FORCE
 	@rm -fr glib/zlib-1.2.11
-	@rm -fr glib/glib-2.40.2
 	@rm -fr glib/libffi-3.2.1
+	@rm -fr glib/glib-2.40.2
 	@exit 0
 
 clean: opensouce_clean 	FORCE
