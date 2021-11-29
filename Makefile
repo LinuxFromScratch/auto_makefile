@@ -80,7 +80,7 @@ LINK_FALGS ?=
 LINK_SLIBS ?=
 LINK_DLIBS ?=
 INSTALL_LIB ?= target/lib
-LINK_COMMON_DEP_DLIBS ?= -lpthread -lm -lrt -ldl -lresolv -lselinux
+LINK_COMMON_DEP_DLIBS ?= -lpthread -lm -lrt -ldl -lresolv 
 
 
 export LINK_STATIC LINK_SHARED LINK_FALGS LINK_SLIBS LINK_DLIBS INSTALL_LIB
@@ -102,17 +102,9 @@ OBJCOPY = $(CROSS_COMPILE)objcopy
 OBJDUMP = $(CROSS_COMPILE)objdump
 RANLIB	= $(CROSS_COMPILE)ranlib
 
-HOST_NAME ?= $(CROSS_COMPILE)
-
 CFLAGS ?=
 CFLAGS += -fPIC -rdynamic -pipe -O2 -Wall
 CFLAGS += -I${CURDIR}/target/include
-
-ifeq ($(CONFIG_SOC),T31)
-	CFLAGS += -muclibc
-else
-	CFLAGS += 
-endif
 
 LDFLAGS ?= 
 
@@ -129,16 +121,19 @@ LINK_PATH := -L target/lib
 LD_LIBS := -lmultitask -lpthread -lm -lrt
 PLATFORM_LIBS :=
 
-ifeq ($(CONFIG_SOC),T31)
-	PLATFORM_LIBS += -limp -lalog
-	LINK_PATH += -L /home/leon/work/Ingenic/Ingenic-SDK-T31-1.1.3/sdk/4.7.2/lib/uclibc
-	CFLAGS += -I /home/leon/work/Ingenic/Ingenic-SDK-T31-1.1.3/sdk/4.7.2/include
-	CFLAGS += -I mmp/t31
-else
+ifeq ($(HOST_NAME),arm-hisiv400-linux)
 	PLATFORM_LIBS += 
 	LINK_PATH += 
+	CFLAGS += 
+	CFLAGS += 
+else
+	PLATFORM_LIBS += -lselinux
+	LINK_PATH += 
+	CFLAGS += 
+	CFLAGS += 
 endif
 
+LINK_COMMON_DEP_DLIBS += ${PLATFORM_LIBS}
 
 export TEST_CFLAGS LINK_PATH LD_LIBS
 
