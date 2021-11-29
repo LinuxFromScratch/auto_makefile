@@ -50,6 +50,7 @@ auto_make_zlib()
 	tar -zxf zlib-1.2.11.tar.gz -C ./ 
 
 	export CFLAGS="-fPIC -Wall -Wno-format -fno-strict-aliasing -O2" 
+	
 	if [ "$1" == "arm-hisiv300-linux" ] ;then	
 		export CC=$1-gcc
 	elif [ "$1" == "arm-hisiv400-linux" ] ;then		
@@ -62,8 +63,10 @@ auto_make_zlib()
 	fi
 	
 	cd zlib-1.2.11 && ./configure --static --enable-shared --prefix=$2 \
-	&& make -j 8 && make install
+	&& make -j8 && make install
 	cd -
+	unset CFLAGS
+	unset CC
 }
 
 auto_clean_zlib()
@@ -103,7 +106,7 @@ auto_make_libffi()
 		exit 1
 	fi
 	
-	make -j 8 && make install
+	make -j8 && make install
 	cd -
 }
 
@@ -121,6 +124,7 @@ auto_clean_libffi()
 auto_make_glib()
 {
 	ENV_VAR_UNSET
+	export PKG_CONFIG_PATH=$2/lib/pkgconfig
 	
 	CMD [$FUNCNAME-$LINENO] "host=$1 install_path=$2"
 	tar -zxf glib-2.40.2.tar.gz -C ./ 
@@ -131,28 +135,26 @@ auto_make_glib()
 	if [ "$1" == "arm-hisiv300-linux" ] ;then	
 		./configure  ${options} ${cache_options} --host=$host --prefix=$2 \
 		CC=$1-gcc \
-		CFLAGS="-fPIC -Wall -Wno-format -fno-strict-aliasing -O2 -Wno-format-nonliteral -Wno-format-overflow  -Wno-format-security " \
-		ZLIB_CFLAGS="-I $2/include" ZLIB_LIBS="$2/lib/libz.a" \
-		LIBFFI_CFLAGS="-I$2lib/libffi-3.2.1/include" LIBFFI_LIBS="$2/lib/libffi.la"
+		CFLAGS="-fPIC -Wall -Wno-format -fno-strict-aliasing -O2 -Wno-format-nonliteral -Wno-format-overflow  -Wno-format-security -I$2/include" \
+		LDFLAGS="-L$2/lib"
 	elif [ "$1" == "arm-hisiv400-linux" ] ;then		
 		./configure  ${options} ${cache_options} --host=$host --prefix=$2 \
 		CC=$1-gcc \
-		CFLAGS="-fPIC -Wall -Wno-format -fno-strict-aliasing -O2 -Wno-format-nonliteral -Wno-format-overflow  -Wno-format-security" \
-		ZLIB_CFLAGS="-I $2/include" ZLIB_LIBS="$2/lib/libz.a" \
-		LIBFFI_CFLAGS="-I$2lib/libffi-3.2.1/include" LIBFFI_LIBS="$2/lib/libffi.la"
+		CFLAGS="-fPIC -Wall -Wno-format -fno-strict-aliasing -O2 -Wno-format-nonliteral -Wno-format-overflow  -Wno-format-security -I$2/include" \
+		LDFLAGS="-L$2/lib"
 	elif [ "$1" == "x86" ] ;then		
 		./configure  ${options} ${cache_options} --prefix=$2 \
 		CC=gcc \
-		CFLAGS="-fPIC -Wall -Wno-format -fno-strict-aliasing -O2 -Wno-format-nonliteral -Wno-format-overflow  -Wno-format-security" \
-		ZLIB_CFLAGS="-I $2/include" ZLIB_LIBS="$2/lib/libz.a" \
-		LIBFFI_CFLAGS="-I $2/lib/libffi-3.2.1/include" LIBFFI_LIBS="$2/lib/libffi.la"
+		CFLAGS="-fPIC -Wall -Wno-format -fno-strict-aliasing -O2 -Wno-format-nonliteral -Wno-format-overflow  -Wno-format-security -I$2/include" \
+		LDFLAGS="-L$2/lib"
 	else
 		ERR [$FUNCNAME-$LINENO] "host: $1 unsupport..."
 		exit 1
 	fi
 	
-	make -j 8 && make install
+	make -j8 && make install
 	cd -
+	unset PKG_CONFIG_PATH
 }
 
 auto_clean_glib()
