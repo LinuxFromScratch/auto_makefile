@@ -127,13 +127,13 @@ ifeq ($(HOST_NAME),arm-hisiv400-linux)
 	CFLAGS += 
 	CFLAGS += 
 else
-	PLATFORM_LIBS += -lselinux
+	LINK_COMMON_DEP_DLIBS += -lselinux
+	PLATFORM_LIBS += 
 	LINK_PATH += 
 	CFLAGS += 
 	CFLAGS += 
 endif
 
-LINK_COMMON_DEP_DLIBS += ${PLATFORM_LIBS}
 
 export TEST_CFLAGS LINK_PATH LD_LIBS
 
