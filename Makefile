@@ -80,6 +80,8 @@ LINK_FALGS ?=
 LINK_SLIBS ?=
 LINK_DLIBS ?=
 INSTALL_LIB ?= target/lib
+LINK_COMMON_DEP_DLIBS ?= -lpthread -lm -lrt -ldl -lresolv -lselinux
+
 
 export LINK_STATIC LINK_SHARED LINK_FALGS LINK_SLIBS LINK_DLIBS INSTALL_LIB
 
@@ -172,7 +174,7 @@ build_3th: FORCE
 
 objs := init/main.o
 
-all: ${dirs} build_comms_static_lib FORCE
+all: ${dirs} build_comms_static_lib build_comm_dym_lib FORCE
 
 test_dirs := sample/
 test_dirs := ${patsubst %/,%,$(filter %/, $(test_dirs))}
