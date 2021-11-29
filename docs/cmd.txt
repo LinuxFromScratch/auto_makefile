@@ -1,0 +1,50 @@
+
+
+
+创建附注标签: 
+git tag -a v0.1.2 -m "0.1.2版本"
+
+git tag -d v0.1.2
+
+删除远端标签 
+git push origin --delete v0.1.2
+
+补打标签: 
+git tag -a v0.1.1 9fbc3d0 -m "0.1.1版本"
+
+
+标签发布:
+git push origin v0.1.2 
+
+git push origin --tags 
+
+
+
+
+
+
+git tag -a auto.makefile.v1.0.0 -m "1.0.0版本"
+
+git tag -a auto.makefile.v1.1.0 -m "1.1.0版本: 解决了第三方库glib的编译问题."
+git tag -a auto.makefile.v1.2.0 -m "1.2.0版本: 脚本./auto_make.sh编译glib相关库"
+
+
+git tag -a auto.makefile.v1.2.0 -m "2.0.0版本: 同时支持makefile及脚本./auto_make.sh编译glib相关库"
+
+git commit --amend 
+
+-Wno-format-nonliteral
+
+
+
+ld -r -o libAUTOMAKE.a  --whole-archive `ls *.a | xargs` --no-whole-archive
+
+
+
+
+
+
+
+
+
+
