@@ -95,6 +95,12 @@ LDFLAGS ?=
 TEST_CFLAGS ?= ${CFLAGS}
 MERGE_LDFLAGS ?=
 LD_LIBS ?= 
+BUILD_FILE ?=
+
+######################################
+export BUILD_FILE
+-include $(BUILD_FILE)
+######################################
 
 AS	= $(CROSS_COMPILE)as
 LD	= $(CROSS_COMPILE)ld
