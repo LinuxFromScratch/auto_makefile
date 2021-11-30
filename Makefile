@@ -121,13 +121,13 @@ LINK_PATH := -L target/lib
 LD_LIBS := -lmultitask -lpthread -lm -lrt
 PLATFORM_LIBS :=
 
-ifeq ($(HOST_NAME),arm-hisiv400-linux)
+ifeq ($(strip $(HOST_NAME)),arm-hisiv400-linux)
 	PLATFORM_LIBS += 
 	LINK_PATH += 
 	CFLAGS += 
 	CFLAGS += 
 else
-	LINK_COMMON_DEP_DLIBS += -lselinux
+	LD_LIBS += -lselinux
 	PLATFORM_LIBS += 
 	LINK_PATH += 
 	CFLAGS += 
