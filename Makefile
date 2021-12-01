@@ -192,6 +192,7 @@ opensouce_clean: FORCE
 	@rm -fr glib/glib-2.40.2
 	@rm -fr ubus/json-c
 	@rm -fr ubus/libubox
+	@rm -fr ubus/ubus
 	@exit 0
 
 clean: FORCE
