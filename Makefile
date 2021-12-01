@@ -191,6 +191,7 @@ opensouce_clean: FORCE
 	@rm -fr glib/libffi-3.2.1
 	@rm -fr glib/glib-2.40.2
 	@rm -fr ubus/json-c
+	@rm -fr ubus/libubox
 	@exit 0
 
 clean: FORCE
