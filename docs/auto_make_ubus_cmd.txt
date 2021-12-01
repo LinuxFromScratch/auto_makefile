@@ -1,0 +1,14 @@
+
+#################################### json-c arm ####################################
+
+./autogen.sh  && ./configure --enable-static --enable-shared  --prefix=`pwd`/../target --host=arm-hisiv400-linux CC=arm-hisiv400-linux-gcc
+
+make -j 8 && make install 
+
+
+#################################### json-c x86 ####################################
+./autogen.sh  && ./configure --enable-static --enable-shared --prefix=`pwd`/../target
+
+make -j 8 && make install 
+
+
