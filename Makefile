@@ -149,7 +149,7 @@ MAKEFILE_BUILD := scripts/Makefile.build
 MAKEFILE_TEST_BUILD := scripts/Makefile.test.build
 export MAKEFILE_BUILD MAKEFILE_TEST_BUILD
 
-dirs := ubus/ glib/
+dirs := module/
 dirs := ${patsubst %/,%,$(filter %/, $(dirs))}
 PHONY += $(dirs)
 $(dirs): FORCE
@@ -187,12 +187,12 @@ $(test_dirs): FORCE
 test: $(test_dirs) FORCE
 
 opensouce_clean: FORCE
-	@rm -fr glib/zlib-1.2.11
-	@rm -fr glib/libffi-3.2.1
-	@rm -fr glib/glib-2.40.2
-	@rm -fr ubus/json-c
-	@rm -fr ubus/libubox
-	@rm -fr ubus/ubus
+	@rm -fr module/glib/zlib-1.2.11
+	@rm -fr module/glib/libffi-3.2.1
+	@rm -fr module/glib/glib-2.40.2
+	@rm -fr module/ubus/json-c
+	@rm -fr module/ubus/libubox
+	@rm -fr module/ubus/ubus
 	@exit 0
 
 clean: FORCE

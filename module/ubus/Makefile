@@ -1,5 +1,5 @@
 
-current_dir := ${CURDIR}/ubus
+current_dir := ${CURDIR}/module/ubus
 
 configure_jsonc_args := --enable-static --enable-shared  --host=${HOST_NAME} --prefix=${CURDIR}/target 
 configure_jsonc_args += CFLAGS="${CFLAGS} -Drpl_realloc=realloc -Drpl_malloc=malloc"

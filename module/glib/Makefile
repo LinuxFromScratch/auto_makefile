@@ -1,5 +1,5 @@
 
-current_dir := ${CURDIR}/glib
+current_dir := ${CURDIR}/module/glib
 
 configure_zlib_args := --static --enable-shared --prefix=${CURDIR}/target
 
